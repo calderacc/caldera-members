@@ -1,9 +1,9 @@
 <?php
 
-namespace AppBundle;
+namespace Caldera\Bundle\MembersBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class AppBundle extends Bundle
+class CalderaMembersBundle extends Bundle
 {
 }
