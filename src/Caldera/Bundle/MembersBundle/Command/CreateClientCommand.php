@@ -2,8 +2,11 @@
 
 namespace Caldera\Bundle\MembersBundle\Command;
 
+use Caldera\Bundle\MembersBundle\Entity\Client;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class CreateClientCommand extends ContainerAwareCommand
 {
@@ -27,5 +30,23 @@ class CreateClientCommand extends ContainerAwareCommand
                 InputArgument::REQUIRED,
                 'List of grantable types'
             );
+    }
+
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $container = $this->getContainer();
+        $oauthServer = $container->get('fos_oauth_server.server');
+
+        $name = $input->getArgument('name');
+        $redirectUri = $input->getArgument('redirect-uri');
+        $grantType = $input->getArgument('grant-type');
+
+        $clientManager = $container->get('fos_oauth_server.client_manager.default');
+
+        /** @var Client $client */
+        $client = $clientManager->createClient();
+        $client->setRedirectUris([$redirectUri]);
+        $client->setAllowedGrantTypes([$grantType]);
+        $clientManager->updateClient($client);
     }
 }
