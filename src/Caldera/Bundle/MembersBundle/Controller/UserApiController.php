@@ -2,6 +2,7 @@
 
 namespace Caldera\Bundle\MembersBundle\Controller;
 
+use Caldera\Bundle\MembersBundle\Entity\AccessToken;
 use Caldera\Bundle\MembersBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -17,11 +18,28 @@ class UserApiController extends Controller
             ->isGranted('IS_AUTHENTICATED_FULLY');
     }
 
-    public function infoAction(Request $request, UserInterface $user)
+    public function infoAction(Request $request)
     {
-        if (!$this->isUserLoggedIn()) {
-            return $this->createAccessDeniedException();
+        $accessTokenString = $request->query->get('access_token');
+
+        if (!$accessTokenString) {
+            throw $this->createAccessDeniedException();
         }
+
+        /** @var AccessToken $accessToken */
+        $accessToken = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('CalderaMembersBundle:AccessToken')
+            ->findOneByToken($accessTokenString)
+        ;
+
+        if (!$accessToken) {
+            throw $this->createAccessDeniedException();
+        }
+
+        /** @var User $user */
+        $user = $accessToken->getUser();
 
         $result = [
             'username' => $user->getUsernameCanonical(),
