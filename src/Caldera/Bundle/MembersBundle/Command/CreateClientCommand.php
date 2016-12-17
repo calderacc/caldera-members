@@ -5,7 +5,7 @@ namespace Caldera\Bundle\MembersBundle\Command;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 
-class CreateClientcommand extends ContainerAwareCommand
+class CreateClientCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
