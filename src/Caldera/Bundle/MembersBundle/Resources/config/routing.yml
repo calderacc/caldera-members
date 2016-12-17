@@ -1,0 +1,3 @@
+caldera_members_api_user_info:
+    path:     /api/user/info
+    defaults: { _controller: CalderaMembersBundle:UserApi:info }
