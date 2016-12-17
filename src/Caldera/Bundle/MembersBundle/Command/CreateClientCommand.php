@@ -45,6 +45,7 @@ class CreateClientCommand extends ContainerAwareCommand
 
         /** @var Client $client */
         $client = $clientManager->createClient();
+        $client->setName($name);
         $client->setRedirectUris([$redirectUri]);
         $client->setAllowedGrantTypes([$grantType]);
         $clientManager->updateClient($client);
