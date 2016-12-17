@@ -74,3 +74,12 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: Caldera\Bundle\MembersBundle\Entity\User
+
+fos_oauth_server:
+    db_driver: orm       # Drivers available: orm, mongodb, or propel
+    client_class:        Caldera\Bundle\MembersBundle\Entity\Client
+    access_token_class:  Caldera\Bundle\MembersBundle\Entity\AccessToken
+    refresh_token_class: Caldera\Bundle\MembersBundle\Entity\RefreshToken
+    auth_code_class:     Caldera\Bundle\MembersBundle\Entity\AuthCode
+    service:
+        user_provider: fos_user.user_provider.username
