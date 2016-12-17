@@ -5,13 +5,23 @@ namespace Caldera\Bundle\MembersBundle\Controller;
 use Caldera\Bundle\MembersBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class UserApiController extends Controller
 {
-    public function infoAction()
+    protected function isUserLoggedIn(): bool
     {
-        /** @var User $user */
-        $user = $this->getDoctrine()->getManager()->getRepository('CalderaMembersBundle:User')->find(1);
+        return $this
+            ->get('security.authorization_checker')
+            ->isGranted('IS_AUTHENTICATED_FULLY');
+    }
+
+    public function infoAction(Request $request, UserInterface $user)
+    {
+        if (!$this->isUserLoggedIn()) {
+            return $this->createAccessDeniedException();
+        }
 
         $result = [
             'username' => $user->getUsernameCanonical(),
