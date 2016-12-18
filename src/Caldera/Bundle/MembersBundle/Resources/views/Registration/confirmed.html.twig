@@ -1,8 +1,26 @@
 {% extends "CalderaMembersBundle:Template:layout.html.twig" %}
 
 {% block content %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
-    {% if targetUrl %}
-    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
-    {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-10 offset-xs-1">
+                <h1>
+                    Alles klar: Du bist jetzt registriert
+                </h1>
+            </div>
+        </div>
+
+        {% if targetUrl %}
+            <div class="row">
+                <div class="col-xs-10 offset-xs-1">
+                    <p>
+                        <a class="btn btn-primary" href="{{ targetUrl }}">
+                            Hier geht’s weiter
+                        </a>
+                    </p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
 {% endblock content %}
