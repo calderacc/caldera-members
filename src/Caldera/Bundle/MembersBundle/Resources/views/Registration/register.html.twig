@@ -10,7 +10,7 @@
                     </label>
 
                     <div class="col-xs-8">
-                        <input class="form-control" type="email" id="fos_user_registration_form_email" name="fos_user_registration_form[email]" required="required" />
+                        {{ form_widget(form.email, { attr: { class: 'form-control'} } ) }}
                     </div>
                 </div>
 
@@ -20,7 +20,7 @@
                     </label>
 
                     <div class="col-xs-8">
-                        <input class="form-control" type="text" id="username" name="_username" required="required" />
+                        {{ form_widget(form.username, { attr: { class: 'form-control'} } ) }}
                     </div>
                 </div>
 
@@ -30,7 +30,7 @@
                     </label>
 
                     <div class="col-xs-8">
-                        <input class="form-control" type="password" id="fos_user_registration_form_plainPassword_first" name="fos_user_registration_form[plainPassword][first]" required="required" />
+                        {{ form_widget(form.plainPassword.first, { attr: { class: 'form-control'} } ) }}
                     </div>
                 </div>
 
@@ -40,7 +40,7 @@
                     </label>
 
                     <div class="col-xs-8">
-                        <input class="form-control" type="password" id="fos_user_registration_form_plainPassword_second" name="fos_user_registration_form[plainPassword][second]" required="required" />
+                        {{ form_widget(form.plainPassword.second, { attr: { class: 'form-control'} } ) }}
                     </div>
                 </div>
 
