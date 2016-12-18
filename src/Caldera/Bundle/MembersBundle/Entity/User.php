@@ -23,4 +23,38 @@ class User extends BaseUser
         parent::__construct();
         // your own logic
     }
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $firstname;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $lastname;
+
+    public function setFirstname(string $firstname): User
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setLastname(string $lastname): User
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
 }
