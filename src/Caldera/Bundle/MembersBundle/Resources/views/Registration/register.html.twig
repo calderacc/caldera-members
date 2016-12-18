@@ -1,5 +1,42 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends 'CalderaMembersBundle:Template:layout.html.twig' %}
 
-{% block fos_user_content %}
-{% include "FOSUserBundle:Registration:register_content.html.twig" %}
-{% endblock fos_user_content %}
+{% block content %}
+    <div class="container">
+        <div class="col-xs-12">
+            <form method="post" action="{{ path('fos_user_registration_register') }}" class="fos_user_registration_register">
+                <div id="fos_user_registration_form">
+                    <div>
+                        <label for="fos_user_registration_form_email" class="required">
+                            form.email
+                        </label>
+                        <input type="email" id="fos_user_registration_form_email" name="fos_user_registration_form[email]" required="required">
+                    </div>
+                    <div>
+                        <label for="fos_user_registration_form_username" class="required">
+                            form.username
+                        </label>
+                        <input type="text" id="fos_user_registration_form_username" name="fos_user_registration_form[username]" required="required" maxlength="255" pattern=".{2,}">
+                    </div>
+                    <div>
+                        <label for="fos_user_registration_form_plainPassword_first" class="required">
+                            form.password
+                        </label>
+                        <input type="password" id="fos_user_registration_form_plainPassword_first" name="fos_user_registration_form[plainPassword][first]" required="required">
+                    </div>
+                    <div>
+                        <label for="fos_user_registration_form_plainPassword_second" class="required">
+                            form.password_confirmation
+                        </label>
+                        <input type="password" id="fos_user_registration_form_plainPassword_second" name="fos_user_registration_form[plainPassword][second]" required="required">
+                    </div>
+
+                    <input type="hidden" id="fos_user_registration_form__token" name="fos_user_registration_form[_token]" value="fAyWeQW156Ha8AA0iDAnNfFWP4q92j0HEjYioqm0EXo">
+                </div>
+
+                <div>
+                    <input class="btn btn-primary" type="submit" value="Registrieren" />
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
