@@ -11,7 +11,7 @@
     </div>
 
     <div class="row mt-3">
-        <div class="col-md-4 offset-md-2">
+        <div class="col-md-4">
             <h3 class="text-xs-center">
                 Noch nicht registriert?
             </h3>
@@ -36,6 +36,20 @@
 
             <a class="btn btn-secondary" href="{{ path('fos_user_security_login') }}">
                 Login
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <h3 class="text-xs-center">
+                Kennwort vergessen?
+            </h3>
+
+            <p>
+                Keine Sorge, das kann ja mal passieren. Wir senden wir gleich ein neues zu.
+            </p>
+
+            <a class="btn btn-secondary" href="{{ path('fos_user_resetting_request') }}">
+                Neues Kennwort anfordern
             </a>
         </div>
     </div>
