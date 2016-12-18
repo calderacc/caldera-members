@@ -4,6 +4,16 @@
     <div class="container">
         <div class="col-xs-12">
             <form method="post" action="{{ path('fos_user_registration_register') }}" class="fos_user_registration_register">
+                {% if form_errors(form.email) %}
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="alert alert-danger">
+                                {{ form_errors(form.email) }}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
                 <div class="form-group row">
                     <label for="fos_user_registration_form_email" class="col-xs-4 col-form-label">
                         Deine E-Mail-Adresse
@@ -13,6 +23,16 @@
                         {{ form_widget(form.email, { attr: { class: 'form-control'} } ) }}
                     </div>
                 </div>
+
+                {% if form_errors(form.username) %}
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="alert alert-danger">
+                                {{ form_errors(form.username) }}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
 
                 <div class="form-group row">
                     <label for="username" class="col-xs-4 col-form-label">
@@ -24,6 +44,16 @@
                     </div>
                 </div>
 
+                {% if form_errors(form.plainPassword.first) %}
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="alert alert-danger">
+                                {{ form_errors(form.plainPassword.first) }}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
                 <div class="form-group row">
                     <label for="fos_user_registration_form_plainPassword_first" class="col-xs-4 col-form-label">
                         Dein Kennwort
@@ -33,6 +63,16 @@
                         {{ form_widget(form.plainPassword.first, { attr: { class: 'form-control'} } ) }}
                     </div>
                 </div>
+
+                {% if form_errors(form.plainPassword.second) %}
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="alert alert-danger">
+                                {{ form_errors(form.plainPassword.second) }}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
 
                 <div class="form-group row">
                     <label for="fos_user_registration_form_plainPassword_second" class="col-xs-4 col-form-label">
