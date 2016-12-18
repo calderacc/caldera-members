@@ -41,7 +41,7 @@ class User extends BaseUser
         return $this;
     }
 
-    public function getFirstname(): ?string
+    public function getFirstname()
     {
         return $this->firstname;
     }
@@ -53,7 +53,7 @@ class User extends BaseUser
         return $this;
     }
 
-    public function getLastname(): ?string
+    public function getLastname()
     {
         return $this->lastname;
     }
