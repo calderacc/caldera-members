@@ -74,6 +74,9 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: Caldera\Bundle\MembersBundle\Entity\User
+    from_email:
+        address: "%mailer_user%"
+        sender_name: "%mailer_user%"
 
 fos_oauth_server:
     db_driver: orm       # Drivers available: orm, mongodb, or propel
